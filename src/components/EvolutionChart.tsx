@@ -31,14 +31,19 @@ export function EvolutionChart({ data }: EvolutionChartProps) {
             tick={{ fill: '#94a3b8', fontSize: 12 }} 
             tickMargin={10}
             axisLine={false}
-            tickFormatter={(value) => value.toFixed(0)}
+            tickFormatter={(value) =>
+              typeof value === 'number' ? value.toFixed(0) : String(value)
+            }
             domain={['auto', 'auto']}
           />
           <Tooltip
             contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#f8fafc' }}
             itemStyle={{ color: '#818cf8' }}
             labelStyle={{ color: '#94a3b8', marginBottom: '4px' }}
-            formatter={(value: number) => [value.toFixed(2), 'Distância']}
+            formatter={(value) => [
+              typeof value === 'number' ? value.toFixed(2) : String(value),
+              'Distância',
+            ]}
             labelFormatter={(label) => `Geração: ${label}`}
           />
           <Line

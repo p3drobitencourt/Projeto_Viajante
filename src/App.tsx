@@ -19,7 +19,7 @@ export default function App() {
   const [taxaMutacao, setTaxaMutacao] = useState(0.05);
   const [taxaCruzamento, setTaxaCruzamento] = useState(0.9);
   
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
 
   const inicializar = useCallback(() => {
     setIsRunning(false);
